@@ -5,8 +5,10 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 if ("${GEODE_TARGET_PLATFORM}" STREQUAL "iOS" OR IOS)
     set(CMAKE_OSX_ARCHITECTURES "arm64")
+	# Disables log spamming when building codegen on iOS 
+	add_definitions(-DGLES_SILENCE_DEPRECATION)
 else()
-	  set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
+	set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
 endif()
 
 project(Template VERSION 1.0.0)
